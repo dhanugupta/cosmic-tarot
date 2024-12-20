@@ -23,7 +23,8 @@ Cosmic Tarot aims to offer users a unique and personalized tarot reading experie
 - TODO: LLM (Large Language Model) with ollama ai
 
 ## Getting Started
-
+![Cosmic Tarot Components](./src/docs/cosmic-tarot-components.png)
+![Cosmic Tarot](./src/docs/cosmic-tarot-ui.png)
 ### Prerequisites
 
 - Node.js (v20 or higher)
