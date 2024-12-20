@@ -11,11 +11,11 @@
   },
   "engines": {
     "npm": ">=10.5.0",
-    "node": ">=20.12.1"
+    "node": ">=16.12.1"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "^2.0.0",
-    "@sveltejs/kit": "^1.30.3",
+    "@sveltejs/adapter-auto": "^2.1.1",
+    "@sveltejs/adapter-static": "^2.0.3",
     "prettier": "^3.4.2",
     "prettier-plugin-svelte": "^3.3.2",
     "svelte": "^4.2.19",
