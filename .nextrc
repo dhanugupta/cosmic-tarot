@@ -1,0 +1,6 @@
+# Next.js configuration to prevent cache issues
+# This file helps Next.js avoid cache corruption
+
+# Disable SWC cache
+SWC_CACHE=false
+
