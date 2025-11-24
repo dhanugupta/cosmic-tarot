@@ -1,8 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Enable static export for GitHub Pages (only when building for GitHub Actions)
+  // Note: This will fail if API routes exist. For API routes, use Vercel/Netlify instead.
+  output: process.env.GITHUB_ACTIONS === 'true' ? 'export' : undefined,
   images: {
     domains: [],
+    // Unoptimized images required for static export
+    unoptimized: process.env.GITHUB_ACTIONS === 'true',
   },
   // Aggressive cache prevention to avoid corruption
   webpack: (config, { dev, isServer }) => {
