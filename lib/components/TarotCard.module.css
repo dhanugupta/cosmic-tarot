@@ -105,18 +105,15 @@
 }
 
 .cardLabel {
-  position: absolute;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: 1rem;
+  text-align: center;
   font-family: 'Cinzel', serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #fbbf24;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   font-weight: 600;
   text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
-  white-space: nowrap;
+  padding: 0.5rem 0;
+  line-height: 1.4;
 }
 
 .reversed {
@@ -144,8 +141,8 @@
 
 .small .cardLabel {
   font-size: 0.9rem;
-  bottom: -30px;
-  letter-spacing: 1px;
+  margin-top: 0.75rem;
+  padding: 0.4rem 0;
 }
 
 /* Compact size variant for even smaller cards */
@@ -168,8 +165,8 @@
 }
 
 .compact .cardLabel {
-  font-size: 0.8rem;
-  bottom: -25px;
-  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  padding: 0.3rem 0;
 }
 
