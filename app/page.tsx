@@ -1,17 +1,20 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useTarotReading } from '@/lib/hooks/useTarotReading';
 import Header from '@/lib/components/Header';
+import NavigationTabs from '@/lib/components/NavigationTabs';
 import StepIndicator from '@/lib/components/StepIndicator';
 import PersonalizationStep from '@/lib/components/PersonalizationStep';
 import CardDrawingStep from '@/lib/components/CardDrawingStep';
 import LoadingScreen from '@/lib/components/LoadingScreen';
 import ReadingDisplayStep from '@/lib/components/ReadingDisplayStep';
 import ReadingLimitWarning from '@/lib/components/ReadingLimitWarning';
+import CardLibrary from '@/lib/components/CardLibrary';
 import './globals.css';
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState<'reading' | 'learn'>('reading');
   const {
     currentStep,
     userName,
@@ -45,12 +48,23 @@ export default function Home() {
   return (
     <div className="cosmic-container">
       <Header />
-      <StepIndicator currentStep={currentStep} />
+      <NavigationTabs activeTab={activeTab} onTabChange={setActiveTab} />
+
+      {/* Learning Tab */}
+      {activeTab === 'learn' && (
+        <CardLibrary />
+      )}
+
+      {/* Reading Tab */}
+      {activeTab === 'reading' && (
+        <>
+          <StepIndicator currentStep={currentStep} />
 
       {/* Step 1: Personalization */}
       {currentStep === 1 && (
         <PersonalizationStep
           userName={userName}
+          remainingReadings={remainingReadings}
           onUserNameChange={setUserName}
           onNext={handleNextStep}
         />
@@ -93,6 +107,8 @@ export default function Home() {
           future={future}
           onStartNewReading={startNewReading}
         />
+      )}
+        </>
       )}
     </div>
   );
