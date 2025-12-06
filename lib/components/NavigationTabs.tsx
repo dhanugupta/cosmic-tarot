@@ -24,3 +24,5 @@ export default function NavigationTabs({ activeTab, onTabChange }: NavigationTab
   );
 }
 
+
+

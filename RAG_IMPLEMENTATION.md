@@ -345,3 +345,5 @@ Check console logs:
 - `Loaded X embeddings from disk` - Embeddings loaded
 - `Failed to retrieve enhanced context` - RAG retrieval failed (but reading continues)
 
+
+

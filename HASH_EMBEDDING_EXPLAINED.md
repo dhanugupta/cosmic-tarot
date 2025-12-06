@@ -147,3 +147,5 @@ const embedding = await generateEmbedding("The Magician");
 - **Memory**: 384 numbers × 4 bytes = 1.5KB per embedding
 - **Scalability**: Can handle thousands of embeddings in memory
 
+
+

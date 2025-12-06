@@ -141,3 +141,5 @@ Make sure PDF files are in `knowledge-base/pdfs/` directory.
 - [ ] Incremental updates (only process new files)
 - [ ] Vector database integration (Pinecone, Weaviate, etc.)
 
+
+
