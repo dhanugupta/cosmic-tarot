@@ -25,13 +25,7 @@ const nextConfig = {
   },
   // Clear output directory on each build
   cleanDistDir: true,
-  // Enable SWC minification (but we'll disable its cache separately)
-  swcMinify: true,
-  // Disable experimental features that might cause cache issues
-  experimental: {
-    // Disable any experimental caching
-    staleTimes: undefined,
-  },
+  // SWC minification is enabled by default in Next.js 15
   // Force clean builds
   onDemandEntries: {
     // Periodically clear the cache
