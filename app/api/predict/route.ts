@@ -88,6 +88,10 @@ function recordReading(identifier: string): void {
 // Use gemini-2.5-flash (latest model)
 const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 
+// Configure route for static export compatibility
+// When using output: export, API routes need revalidate = false
+export const revalidate = false;
+
 export async function POST(request: NextRequest) {
   const isDevelopment = process.env.NODE_ENV === 'development';
   

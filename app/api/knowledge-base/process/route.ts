@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { processKnowledgeBase, initializeRAG } from '@/lib/rag/ragService';
 
+// Configure route for static export compatibility
+// When using output: export, API routes need revalidate = false
+export const revalidate = false;
+
 /**
  * API endpoint to process the knowledge base
  * POST /api/knowledge-base/process
