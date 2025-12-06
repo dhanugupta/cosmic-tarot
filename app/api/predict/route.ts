@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
 import { generatePrompt } from "@/lib/prompts/generatePrompt";
+import { initializeRAG } from "@/lib/rag/ragService";
 import { getMockReading } from "@/lib/mocks/mockReading";
 import type { ReadingPrompt } from "@/lib/types";
 
@@ -88,6 +89,24 @@ function recordReading(identifier: string): void {
 const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 
 export async function POST(request: NextRequest) {
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  
+  // Initialize RAG system on first request
+  if (isDevelopment) {
+    console.log('\n🚀 === API REQUEST RECEIVED ===');
+    console.log('Initializing RAG system...');
+  }
+  
+  try {
+    await initializeRAG();
+    if (isDevelopment) {
+      const { isKnowledgeBaseReady } = await import('@/lib/rag/ragService');
+      console.log(`RAG Status: ${isKnowledgeBaseReady() ? '✅ Ready' : '⚠️  Not ready (no embeddings found)'}`);
+    }
+  } catch (error) {
+    console.warn('RAG initialization failed, continuing without enhanced context:', error);
+  }
+  
   // Get request identifier for rate limiting
   const identifier = getRequestIdentifier(request);
   
@@ -169,7 +188,11 @@ export async function POST(request: NextRequest) {
     console.log("Prompt object:", JSON.stringify(prompt, null, 2));
 
     // Generate the prompt text
-    const promptText = generatePrompt({
+    if (isDevelopment) {
+      console.log('\n📝 Generating prompt with RAG enhancement...');
+    }
+    
+    const promptText = await generatePrompt({
       userName: prompt.userName,
       currentMood: prompt.currentMood,
       currentContext: prompt.currentContext,
@@ -178,6 +201,12 @@ export async function POST(request: NextRequest) {
       futureCard: prompt.future,
       currentReadingType: prompt.currentReadingType,
     });
+    
+    if (isDevelopment) {
+      console.log('\n🚀 === SENDING PROMPT TO GEMINI API ===');
+      console.log(`Model: ${GEMINI_MODEL}`);
+      console.log(`Prompt length: ${promptText.length} characters`);
+    }
 
     console.log("=== DEBUG: Request to Google API ===");
     console.log("Prompt length:", promptText.length);

@@ -27,11 +27,11 @@ export default function TarotCard({
   return (
     <div className={`${styles.cardWrapper} ${sizeClass}`}>
       <div className={`${styles.card} ${revealed ? styles.revealed : ''} ${sizeClass}`}>
-        {revealed && name ? (
+        {revealed ? (
           <img
             className={reversed ? styles.reversed : ''}
             src={imageSrc}
-            alt={name}
+            alt={name || cardLabel}
           />
         ) : (
           <div className={styles.cardBack}>
@@ -39,11 +39,6 @@ export default function TarotCard({
           </div>
         )}
       </div>
-      {revealed && name && (
-        <div className={styles.cardName}>
-          <h3>{name}</h3>
-        </div>
-      )}
       <div className={styles.cardLabel}>{cardLabel}</div>
     </div>
   );

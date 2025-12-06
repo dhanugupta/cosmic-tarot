@@ -42,3 +42,7 @@ node_modules/.cache
 .next/cache
 .next/server/chunks
 .next/static/chunks
+
+# Knowledge base generated files
+knowledge-base/embeddings/
+knowledge-base/chunks/
