@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@google/genai": "^1.30.0",
-    "next": "^15.2.4",
+    "next": "^15.2.9",
     "pdf-parse": "^2.4.5",
     "pdfjs-dist": "^5.4.394",
     "react": "^19.2.3",
